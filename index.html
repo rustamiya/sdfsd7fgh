@@ -1,0 +1,303 @@
+<!doctype html>
+<html class="landing" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>★ By Yasir Aliraqi ★ 009647890195095 ★</title>
+    <!-- Tailwind CSS for utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              psBlue: '#0070d1',
+              psCyan: '#00f0ff',
+              psPurple: '#7b2cbf',
+              darkBg: '#080b14',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Custom Animations & Futuristic Styling */
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.4; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.05); }
+      }
+      @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(1000%); }
+      }
+
+      body {
+        background-color: #060913;
+        color: #e2e8f0;
+        font-family: 'Inter', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Ambient Light Orbs */
+      .orb-1 {
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, rgba(0,0,0,0) 70%);
+        border-radius: 50%;
+        filter: blur(50px);
+        animation: pulseGlow 8s infinite ease-in-out;
+        pointer-events: none;
+      }
+      .orb-2 {
+        position: absolute;
+        bottom: -10%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(123, 44, 191, 0.3) 0%, rgba(0,0,0,0) 70%);
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: pulseGlow 10s infinite ease-in-out reverse;
+        pointer-events: none;
+      }
+
+      /* Grid Overlay */
+      .cyber-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Glassmorphism Panel */
+      .panel {
+        background: rgba(13, 18, 36, 0.65);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 240, 255, 0.18);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                    0 0 20px rgba(0, 240, 255, 0.1);
+      }
+
+      /* Custom Payload Radio Selector Cards */
+      .opt input[type="radio"] {
+        display: none;
+      }
+      .opt {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.25rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        user-select: none;
+      }
+      .opt:hover {
+        background: rgba(0, 240, 255, 0.08);
+        border-color: rgba(0, 240, 255, 0.3);
+        transform: translateY(-2px);
+      }
+      .opt:has(input[type="radio"]:checked) {
+        background: linear-gradient(135deg, rgba(0, 112, 209, 0.3) 0%, rgba(0, 240, 255, 0.15) 100%);
+        border-color: #00f0ff;
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.1);
+        color: #ffffff;
+      }
+
+      /* Autostart Toggle Styling */
+      .opt-auto {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 0.75rem 1rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .opt-auto:hover {
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+      .toggle-switch {
+        position: relative;
+        width: 44px;
+        height: 24px;
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: 9999px;
+        transition: background-color 0.3s;
+      }
+      .toggle-switch::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        transition: transform 0.3s;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      }
+      input[type="checkbox"]:checked + .toggle-switch {
+        background-color: #00f0ff;
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      }
+      input[type="checkbox"]:checked + .toggle-switch::after {
+        transform: translateX(20px);
+      }
+
+      /* Action Button Glowing Gradient */
+      .btn {
+        position: relative;
+        background: linear-gradient(135deg, #0070d1 0%, #00f0ff 100%);
+        color: #000;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 0.75rem;
+        padding: 0.9rem 1.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        overflow: hidden;
+      }
+      .btn:hover {
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+        color: #050814;
+      }
+      .btn:active {
+        transform: translateY(0) scale(0.99);
+      }
+      .btn::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transform: rotate(45deg);
+        transition: 0.5s;
+        pointer-events: none;
+      }
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      /* Custom styling for image fallback framing */
+      .meme-frame {
+        position: relative;
+        border-radius: 1rem;
+        padding: 3px;
+        background: linear-gradient(135deg, rgba(0,240,255,0.4), rgba(123,44,191,0.4));
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      }
+      .meme {
+        max-height: 180px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 0.85rem;
+        display: block;
+        background: #0d1224;
+      }
+    </style>
+  </head>
+  <body class="p-4 sm:p-6 text-slate-200">
+    <!-- Ambient glowing backgrounds -->
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="cyber-grid"></div>
+
+    <!-- Header Branding -->
+    <header class="w-full text-center py-4 z-10">
+      <div id="brand" class="inline-block text-xs sm:text-sm font-semibold tracking-wider text-cyan-400/90 bg-cyan-950/40 border border-cyan-500/20 px-4 py-2 rounded-full backdrop-blur-md shadow-lg shadow-cyan-950/50">
+        <b>★ By Yasir Aliraqi ★ 009647890195095 ★</b>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="shell w-full max-w-md mx-auto my-auto z-10 flex flex-col items-center gap-6">
+      <!-- Meme Image Wrapper -->
+      <div class="meme-frame">
+        <img class="meme" src="meme.png" alt="PS4 Exploit Banner" onerror="this.style.display='none'" />
+      </div>
+
+      <!-- Main Interactive Panel -->
+      <main class="panel w-full rounded-2xl p-6 sm:p-8 flex flex-col gap-6 text-center">
+        <!-- Title & Firmware Info -->
+        <div class="space-y-1">
+          <h1 class="text-xs uppercase tracking-widest text-cyan-400 font-bold">PlayStation 4 System</h1>
+          <p class="lede text-lg sm:text-xl font-extrabold text-white tracking-wide">
+            PS4 kernel exploit <span class="text-cyan-400 font-normal">&middot;</span> <span class="text-purple-400">firmware 14.00</span>
+          </p>
+        </div>
+
+        <!-- Exploit Configuration Form -->
+        <form class="pick flex flex-col gap-5" id="pick">
+          <!-- Payload Options Grid -->
+          <div class="grid grid-cols-2 gap-3">
+            <label class="opt">
+              <input type="radio" name="payload" value="hen" />
+              <span>ps4-hen</span>
+            </label>
+
+            <label class="opt">
+              <input type="radio" name="payload" value="goldhen" checked />
+              <span>GoldHEN</span>
+            </label>
+          </div>
+
+          <!-- Autostart Toggle Selector -->
+          <label class="opt-auto">
+            <span class="text-sm font-medium text-slate-300">Autostart Payload</span>
+            <input type="checkbox" id="auto" checked class="hidden" />
+            <div class="toggle-switch"></div>
+          </label>
+
+          <!-- Trigger Button -->
+          <button class="btn mt-2 w-full text-base font-bold" type="submit">start</button>
+
+          <!-- Countdown / Status Display -->
+          <p class="count min-h-[1.5rem] text-sm text-cyan-300/90 font-mono tracking-wide" id="count"></p>
+        </form>
+      </main>
+    </div>
+
+    <!-- Footer Byline -->
+    <footer class="w-full text-center py-4 z-10">
+      <p class="byline text-xs tracking-wider text-slate-500 hover:text-slate-400 transition-colors">
+        ★ By Yasir Aliraqi ★ 009647890195095 ★
+      </p>
+    </footer>
+
+    <!-- Execution Script -->
+    <script src="launch.js"></script>
+  </body>
+</html>
